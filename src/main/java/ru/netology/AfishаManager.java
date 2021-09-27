@@ -9,8 +9,10 @@ public class AfishаManager {
         this.maxFilms = maxFilms;
     }
 
-    public void removeById(int id) {
+    public AfishаManager() {
+    }
 
+    public void removeById(int id) {
         int length = film.length - 1;
         Film[] tmp = new Film[length];
         int index = 0;
@@ -24,19 +26,25 @@ public class AfishаManager {
     }
 
     public void addFilm(Film item) {
-        int Length = film.length + 1;
-        Film[] result = new Film[Length];
-        System.arraycopy(film,0,result,0,film.length);
+        int length = film.length + 1;
+        Film[] result = new Film[length];
+        System.arraycopy(film, 0, result, 0, film.length);
         int lastIndex = result.length - 1;
         result[lastIndex] = item;
         film = result;
     }
 
-    public Film[] getAllLast() {
-        int resultLength = Math.min(film.length, maxFilms);
-        Film[] result = new Film[resultLength];
-        for (int i = 0; i < result.length; i++) {
-            int index = resultLength - i - 1;
+    public Film[] showAll() {
+        int length = maxFilms;
+        if (length > film.length) {
+            length = film.length;
+        }
+        if (maxFilms <= 0) {
+            length = film.length;
+        }
+        Film[] result = new Film[length];
+        for (int i = 0; i < length; i++) {
+            int index = film.length - i - 1;
             result[i] = film[index];
         }
         return result;
