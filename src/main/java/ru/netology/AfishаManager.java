@@ -33,12 +33,7 @@ public class AfishаManager {
     }
 
     public Film[] getAllLast() {
-        int resultLength;
-        if (film.length < maxFilms) {
-            resultLength = film.length;
-        } else {
-            resultLength = maxFilms;
-        }
+        int resultLength = Math.min(film.length, maxFilms);
         Film[] result = new Film[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = resultLength - i - 1;
